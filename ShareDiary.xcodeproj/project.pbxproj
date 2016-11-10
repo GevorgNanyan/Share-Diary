@@ -1,0 +1,334 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAB405181DD4E5F1003D7F06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB405171DD4E5F1003D7F06 /* main.m */; };
+		FAB4051B1DD4E5F1003D7F06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB4051A1DD4E5F1003D7F06 /* AppDelegate.m */; };
+		FAB4051E1DD4E5F1003D7F06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB4051D1DD4E5F1003D7F06 /* ViewController.m */; };
+		FAB405211DD4E5F1003D7F06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB4051F1DD4E5F1003D7F06 /* Main.storyboard */; };
+		FAB405241DD4E5F1003D7F06 /* ShareDiary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAB405221DD4E5F1003D7F06 /* ShareDiary.xcdatamodeld */; };
+		FAB405261DD4E5F1003D7F06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB405251DD4E5F1003D7F06 /* Assets.xcassets */; };
+		FAB405291DD4E5F1003D7F06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB405271DD4E5F1003D7F06 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FAB405131DD4E5F1003D7F06 /* ShareDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAB405171DD4E5F1003D7F06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAB405191DD4E5F1003D7F06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAB4051A1DD4E5F1003D7F06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAB4051C1DD4E5F1003D7F06 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FAB4051D1DD4E5F1003D7F06 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FAB405201DD4E5F1003D7F06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FAB405231DD4E5F1003D7F06 /* ShareDiary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShareDiary.xcdatamodel; sourceTree = "<group>"; };
+		FAB405251DD4E5F1003D7F06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAB405281DD4E5F1003D7F06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FAB4052A1DD4E5F1003D7F06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAB405101DD4E5F1003D7F06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAB4050A1DD4E5F1003D7F06 = {
+			isa = PBXGroup;
+			children = (
+				FAB405151DD4E5F1003D7F06 /* ShareDiary */,
+				FAB405141DD4E5F1003D7F06 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAB405141DD4E5F1003D7F06 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAB405131DD4E5F1003D7F06 /* ShareDiary.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAB405151DD4E5F1003D7F06 /* ShareDiary */ = {
+			isa = PBXGroup;
+			children = (
+				FAB405191DD4E5F1003D7F06 /* AppDelegate.h */,
+				FAB4051A1DD4E5F1003D7F06 /* AppDelegate.m */,
+				FAB4051C1DD4E5F1003D7F06 /* ViewController.h */,
+				FAB4051D1DD4E5F1003D7F06 /* ViewController.m */,
+				FAB4051F1DD4E5F1003D7F06 /* Main.storyboard */,
+				FAB405251DD4E5F1003D7F06 /* Assets.xcassets */,
+				FAB405271DD4E5F1003D7F06 /* LaunchScreen.storyboard */,
+				FAB4052A1DD4E5F1003D7F06 /* Info.plist */,
+				FAB405221DD4E5F1003D7F06 /* ShareDiary.xcdatamodeld */,
+				FAB405161DD4E5F1003D7F06 /* Supporting Files */,
+			);
+			path = ShareDiary;
+			sourceTree = "<group>";
+		};
+		FAB405161DD4E5F1003D7F06 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAB405171DD4E5F1003D7F06 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAB405121DD4E5F1003D7F06 /* ShareDiary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAB4052D1DD4E5F2003D7F06 /* Build configuration list for PBXNativeTarget "ShareDiary" */;
+			buildPhases = (
+				FAB4050F1DD4E5F1003D7F06 /* Sources */,
+				FAB405101DD4E5F1003D7F06 /* Frameworks */,
+				FAB405111DD4E5F1003D7F06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareDiary;
+			productName = ShareDiary;
+			productReference = FAB405131DD4E5F1003D7F06 /* ShareDiary.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAB4050B1DD4E5F1003D7F06 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = macbook;
+				TargetAttributes = {
+					FAB405121DD4E5F1003D7F06 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = LRYGEZ4QXF;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FAB4050E1DD4E5F1003D7F06 /* Build configuration list for PBXProject "ShareDiary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FAB4050A1DD4E5F1003D7F06;
+			productRefGroup = FAB405141DD4E5F1003D7F06 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAB405121DD4E5F1003D7F06 /* ShareDiary */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAB405111DD4E5F1003D7F06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAB405291DD4E5F1003D7F06 /* LaunchScreen.storyboard in Resources */,
+				FAB405261DD4E5F1003D7F06 /* Assets.xcassets in Resources */,
+				FAB405211DD4E5F1003D7F06 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAB4050F1DD4E5F1003D7F06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAB4051E1DD4E5F1003D7F06 /* ViewController.m in Sources */,
+				FAB4051B1DD4E5F1003D7F06 /* AppDelegate.m in Sources */,
+				FAB405181DD4E5F1003D7F06 /* main.m in Sources */,
+				FAB405241DD4E5F1003D7F06 /* ShareDiary.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FAB4051F1DD4E5F1003D7F06 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAB405201DD4E5F1003D7F06 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FAB405271DD4E5F1003D7F06 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAB405281DD4E5F1003D7F06 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAB4052B1DD4E5F1003D7F06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FAB4052C1DD4E5F2003D7F06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAB4052E1DD4E5F2003D7F06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LRYGEZ4QXF;
+				INFOPLIST_FILE = ShareDiary/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.share-diary.ShareDiary";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FAB4052F1DD4E5F2003D7F06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LRYGEZ4QXF;
+				INFOPLIST_FILE = ShareDiary/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.share-diary.ShareDiary";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAB4050E1DD4E5F1003D7F06 /* Build configuration list for PBXProject "ShareDiary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAB4052B1DD4E5F1003D7F06 /* Debug */,
+				FAB4052C1DD4E5F2003D7F06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAB4052D1DD4E5F2003D7F06 /* Build configuration list for PBXNativeTarget "ShareDiary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAB4052E1DD4E5F2003D7F06 /* Debug */,
+				FAB4052F1DD4E5F2003D7F06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FAB405221DD4E5F1003D7F06 /* ShareDiary.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAB405231DD4E5F1003D7F06 /* ShareDiary.xcdatamodel */,
+			);
+			currentVersion = FAB405231DD4E5F1003D7F06 /* ShareDiary.xcdatamodel */;
+			path = ShareDiary.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FAB4050B1DD4E5F1003D7F06 /* Project object */;
+}
