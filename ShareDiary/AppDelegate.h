@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
+#import <UserNotifications/UserNotifications.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (readonly, strong) NSPersistentContainer *persistentContainer;
+- (void)scheduleNotificationForRegion:(CLCircularRegion *)region title:(NSString *)title imageName:(NSString *)imageName;
 
-- (void)saveContext;
-
+- (CLLocationManager *)sharedManager;
 
 @end
 

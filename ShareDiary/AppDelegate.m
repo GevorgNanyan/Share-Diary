@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "DataManager.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "SharedImage.h"
 
 @interface AppDelegate ()
 
@@ -15,11 +18,79 @@
 @implementation AppDelegate
 
 
+
+//- (void)showNotification:(CLCircularRegion *)region title:(NSString *)title imageName:(NSString *)imageName {
+//    
+//    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
+//    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+//    content.sound = [UNNotificationSound defaultSound];
+//    content.title = title;
+//    content.body = title;
+////        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+////                                                             NSUserDomainMask, YES);
+////        NSString *documentsDirectory = [paths objectAtIndex:0];
+////        NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",imageName]];
+////        NSURL *url = [NSURL fileURLWithPath:path];
+////        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:imageName URL:url options:nil error:nil];
+////        content.attachments = @[attachment];
+//    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"aaa" content:content trigger:trigger];
+//    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
+//}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
+                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                              // Enable or disable features based on authorization.
+                          }];
+    
+    /////
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    if ([defaults boolForKey:@"isRegistered"]) {
+        UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        self.window.rootViewController = viewController;
+        
+    } else {
+        UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"signUpViewController"];
+        self.window.rootViewController = viewController;
+        
+    }    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                               annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+                    ];
+    return handled;
+}
+
+- (CLLocationManager *)sharedManager {
+    static CLLocationManager *manager;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [[CLLocationManager alloc] init];
+    });
+    return manager;
+}
+
+
+- (void)scheduleNotificationForRegion:(CLCircularRegion *)region title:(NSString *)title imageName:(NSString *)imageName {
+    UNLocationNotificationTrigger *trigger = [UNLocationNotificationTrigger triggerWithRegion:region repeats:YES];
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.title = title;
+    content.sound = [UNNotificationSound defaultSound];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:region.identifier content:content trigger:trigger];
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -27,9 +98,18 @@
 }
 
 
+- (CLCircularRegion *)createRegionWithLatitude:(double)latitude andLongitude:(double)longitude {
+    CLLocationCoordinate2D regionCenter = CLLocationCoordinate2DMake(latitude, longitude);
+    return [[CLCircularRegion alloc] initWithCenter:regionCenter radius:100 identifier:[NSString stringWithFormat:@"%.12f, %.12f", latitude, longitude]];
+}
+
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SharedImage"];
+    NSArray *results = [[[DataManager sharedManager] context] executeFetchRequest:request error:nil];
+    for (SharedImage *event in results) {
+       CLCircularRegion *region = [self createRegionWithLatitude:event.latitude andLongitude:event.longitude];
+        [self scheduleNotificationForRegion:region title:event.title imageName:event.imageName];
+    }
 }
 
 
@@ -46,53 +126,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
-}
-
-
-#pragma mark - Core Data stack
-
-@synthesize persistentContainer = _persistentContainer;
-
-- (NSPersistentContainer *)persistentContainer {
-    // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
-    @synchronized (self) {
-        if (_persistentContainer == nil) {
-            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"ShareDiary"];
-            [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
-                if (error != nil) {
-                    // Replace this implementation with code to handle the error appropriately.
-                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    
-                    /*
-                     Typical reasons for an error here include:
-                     * The parent directory does not exist, cannot be created, or disallows writing.
-                     * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                     * The device is out of space.
-                     * The store could not be migrated to the current model version.
-                     Check the error message to determine what the actual problem was.
-                    */
-                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-                    abort();
-                }
-            }];
-        }
-    }
-    
-    return _persistentContainer;
-}
-
-#pragma mark - Core Data Saving support
-
-- (void)saveContext {
-    NSManagedObjectContext *context = self.persistentContainer.viewContext;
-    NSError *error = nil;
-    if ([context hasChanges] && ![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
-    }
+    [[DataManager sharedManager] saveContext];
 }
 
 @end
