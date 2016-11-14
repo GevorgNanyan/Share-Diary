@@ -47,7 +47,7 @@
     [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
 }
 
-#pragma mark - Createing pins
+#pragma mark - Creating pins
 
 - (void)addAllPins {
     NSMutableArray *title=[NSMutableArray array];
@@ -60,13 +60,13 @@
     }
     for(int i = 0; i < title.count; i++)
     {
-        [self addPinWithTitle:title[i] AndCoordinate:arrCoordinateStr[i]];
+        [self addPinWithTitle:title[i] andCoordinate:arrCoordinateStr[i]];
     }
 }
 
 #pragma mark - Adding pins to map
 
-- (void)addPinWithTitle:(NSString *)title AndCoordinate:(NSString *)strCoordinate {
+- (void)addPinWithTitle:(NSString *)title andCoordinate:(NSString *)strCoordinate {
     MKPointAnnotation *mapPin = [[MKPointAnnotation alloc] init];
     // clear out any white space
     strCoordinate = [strCoordinate stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -81,7 +81,7 @@
     [self.mapView addAnnotation:mapPin];
 }
 
-#pragma mark - Addig image to pin
+#pragma mark - Adding image to pin
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *identifier = @"pin";

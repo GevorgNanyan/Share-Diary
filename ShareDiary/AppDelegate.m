@@ -88,12 +88,8 @@
 }
 
 
-- (CLCircularRegion *)createRegionWithLatitude:(double)latitude andLongitude:(double)longitude {
-    CLLocationCoordinate2D regionCenter = CLLocationCoordinate2DMake(latitude, longitude);
-    return [[CLCircularRegion alloc] initWithCenter:regionCenter radius:100 identifier:[NSString stringWithFormat:@"%.12f, %.12f", latitude, longitude]];
-}
-
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    
 }
 
 
@@ -111,13 +107,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [[DataManager sharedManager] saveContext];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SharedImage"];
-    NSArray *results = [[[DataManager sharedManager] context] executeFetchRequest:request error:nil];
-    for (SharedImage *event in results) {
-        CLCircularRegion *region = [self createRegionWithLatitude:event.latitude andLongitude:event.longitude];
-        [self scheduleNotificationForRegion:region title:event.title imageName:event.imageName];
-    }
-
 }
 
 @end

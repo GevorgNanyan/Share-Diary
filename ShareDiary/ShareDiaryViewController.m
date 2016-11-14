@@ -131,7 +131,10 @@
         NSString *path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", sharedImage.imageName]];
         NSData *data = UIImageJPEGRepresentation(self.imageView.image, 1);
         [data writeToFile:path atomically:YES];
-//         Creating notification region and scheduling notification
+        
+        
+//         Creating notification region and scheduling notification(commented since there is an issue with notifications)
+        
       //  CLCircularRegion *notificationRegion = [self createRegionWithLatitude:sharedImage.latitude andLongitude:sharedImage.longitude];
         //[(AppDelegate *)[[UIApplication sharedApplication] delegate] scheduleNotificationForRegion:notificationRegion title:self.imageTitle.text imageName:sharedImage.imageName];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Congratulations!!!" message:@"Your photo has been successfully shared" preferredStyle:UIAlertControllerStyleAlert];
