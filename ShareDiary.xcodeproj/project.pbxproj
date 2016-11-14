@@ -393,7 +393,7 @@
 				TargetAttributes = {
 					FAB405121DD4E5F1003D7F06 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = LRYGEZ4QXF;
+						DevelopmentTeam = 8FLS6C4V4F;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -591,14 +591,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = LRYGEZ4QXF;
+				DEVELOPMENT_TEAM = 8FLS6C4V4F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareDiary",
 				);
 				INFOPLIST_FILE = ShareDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.share-diary.ShareDiary";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lilit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -607,14 +607,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = LRYGEZ4QXF;
+				DEVELOPMENT_TEAM = 8FLS6C4V4F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShareDiary",
 				);
 				INFOPLIST_FILE = ShareDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.share-diary.ShareDiary";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lilit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

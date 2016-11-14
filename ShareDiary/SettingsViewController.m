@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 
 
-@interface SettingsViewController ()
+@interface SettingsViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -61,25 +61,46 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning!" message:@"Invalid text field" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
-    } else if (self.passwordTextField.text.length < 5 ||
-               self.passwordNewTextField.text.length < 5) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning!" message:@"Your password must contain at least 5 characters" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-        [self presentViewController:alert animated:YES completion:nil];
-    } else if ([self.passwordTextField.text isEqualToString:self.passwordNewTextField.text]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Do you you want to change your account username and password?" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:nil];
-        UIAlertAction *actionConfirm = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults removeObjectForKey:@"username"];
-            [defaults removeObjectForKey:@"password"];
-            [defaults setObject:@[self.usernameTextField.text] forKey:@"username"];
-            [defaults setObject:@[self.passwordTextField.text] forKey:@"password"];
-        }];
-        [alert addAction:actionCancel];
-        [alert addAction:actionConfirm];
-        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        if (self.passwordTextField.text.length < 5 ||
+            self.passwordNewTextField.text.length < 5) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning!" message:@"Your password must contain at least 5 characters" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else if ([self.passwordTextField.text isEqualToString:self.passwordNewTextField.text]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Do you you want to change your account username and password?" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *actionConfirm = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:self.usernameTextField.text forKey:@"username"];
+                [defaults setObject:self.passwordTextField.text forKey:@"password"];
+                [defaults synchronize];
+                
+            }];
+            [alert addAction:actionCancel];
+            [alert addAction:actionConfirm];
+            [self presentViewController:alert animated:YES completion:nil];
+        } else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning!" message:@"Wrong password!" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.usernameTextField) {
+        [self.passwordTextField becomeFirstResponder];
+    } else if (textField == self.passwordTextField) {
+        [self.passwordNewTextField becomeFirstResponder];
+    } else if (textField == self.passwordNewTextField) {
+        [self changeAccount];
+    }
+    return YES;
+}
+
+
+    
 @end

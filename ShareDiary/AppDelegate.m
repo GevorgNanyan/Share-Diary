@@ -18,25 +18,6 @@
 @implementation AppDelegate
 
 
-
-//- (void)showNotification:(CLCircularRegion *)region title:(NSString *)title imageName:(NSString *)imageName {
-//    
-//    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
-//    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-//    content.sound = [UNNotificationSound defaultSound];
-//    content.title = title;
-//    content.body = title;
-////        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-////                                                             NSUserDomainMask, YES);
-////        NSString *documentsDirectory = [paths objectAtIndex:0];
-////        NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",imageName]];
-////        NSURL *url = [NSURL fileURLWithPath:path];
-////        UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:imageName URL:url options:nil error:nil];
-////        content.attachments = @[attachment];
-//    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"aaa" content:content trigger:trigger];
-//    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
-//}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert + UNAuthorizationOptionSound)
@@ -87,7 +68,16 @@
     UNLocationNotificationTrigger *trigger = [UNLocationNotificationTrigger triggerWithRegion:region repeats:YES];
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = title;
+    content.body = @"Somebody has taken a photo here!";
     content.sound = [UNNotificationSound defaultSound];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",imageName]];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:imageName URL:url options:nil error:nil];
+    content.attachments = @[attachment];
+
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:region.identifier content:content trigger:trigger];
     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
 }
@@ -104,12 +94,6 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SharedImage"];
-    NSArray *results = [[[DataManager sharedManager] context] executeFetchRequest:request error:nil];
-    for (SharedImage *event in results) {
-       CLCircularRegion *region = [self createRegionWithLatitude:event.latitude andLongitude:event.longitude];
-        [self scheduleNotificationForRegion:region title:event.title imageName:event.imageName];
-    }
 }
 
 
@@ -127,6 +111,13 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [[DataManager sharedManager] saveContext];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SharedImage"];
+    NSArray *results = [[[DataManager sharedManager] context] executeFetchRequest:request error:nil];
+    for (SharedImage *event in results) {
+        CLCircularRegion *region = [self createRegionWithLatitude:event.latitude andLongitude:event.longitude];
+        [self scheduleNotificationForRegion:region title:event.title imageName:event.imageName];
+    }
+
 }
 
 @end

@@ -47,10 +47,8 @@
         [self presentViewController:alert animated:YES completion:nil];
     } else {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSLog(@"key %@", [defaults objectForKey:@"username"]);
-        NSLog(@"key %@", [defaults objectForKey:@"password"]);
-        if ([self.usernameLogIn.text isEqualToString:[defaults objectForKey:@"username"]] &&
-            [self.passwordLogIn.text isEqualToString:[defaults objectForKey:@"password"]] ) {
+        if ([self.usernameLogIn.text isEqualToString:[defaults stringForKey:@"username"]] &&
+            [self.passwordLogIn.text isEqualToString:[defaults stringForKey:@"password"]] ) {
             [self performSegueWithIdentifier:@"GoMenuLogIn" sender:nil];
         } else {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning!" message:@"Invalid username or password" preferredStyle:UIAlertControllerStyleAlert];
